@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import logo from "../../../assets/logo.png";
 import { Link } from "react-scroll";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "../../../context/ThemeContext";
 
 const navItems = [
   { id: 1, name: "Home", url: "introduction" },
@@ -37,6 +39,7 @@ const menu = navItems.map((item) => (
 
 const NavBar = () => {
   const [position, setPosition] = useState(0);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,8 +55,8 @@ const NavBar = () => {
     <div
       className={`sticky top-0 ${
         position > 50
-          ? "bg-soft-white border-b border-gray-300"
-          : "bg-white border-white"
+          ? "bg-base-200 border-b border-base-300"
+          : "bg-base-100 border-base-100"
       } z-50 transition-all duration-1000`}
     >
       <div className="navbar flex justify-between mx-auto content">
@@ -77,7 +80,7 @@ const NavBar = () => {
             </div>
             <ul
               tabIndex={0}
-              className={`menu menu-lg dropdown-content rounded-box z-1 mt-3 w-lvw p-2 shadow font-semibold flex-nowrap bg-white text-black`}
+              className={`menu menu-lg dropdown-content rounded-box z-1 mt-3 w-lvw p-2 shadow font-semibold flex-nowrap bg-base-100 text-base-content`}
             >
               {menu}
             </ul>
@@ -101,17 +104,30 @@ const NavBar = () => {
           <ul className="hidden lg:flex menu menu-horizontal text-[16px] font-medium md:shrink-0">
             {menu}
           </ul>
-          <p className="">
-            <Link
-              className="btn btn-sm xs:btn-md sm:btn-lg btn-primary"
-              href="#contact"
-              to={`contact`}
-              smooth={true}
-              duration={900}
+          <div className="flex items-center gap-4">
+            <button
+              onClick={toggleTheme}
+              className="btn btn-ghost btn-circle text-gray-500 hover:text-picto-primary"
+              aria-label="Toggle Theme"
             >
-              Contact
-            </Link>
-          </p>
+              {theme === "light" ? (
+                <Moon className="w-5 h-5 sm:w-6 sm:h-6" />
+              ) : (
+                <Sun className="w-5 h-5 sm:w-6 sm:h-6" />
+              )}
+            </button>
+            <p className="">
+              <Link
+                className="btn btn-sm xs:btn-md sm:btn-lg btn-primary"
+                href="#contact"
+                to={`contact`}
+                smooth={true}
+                duration={900}
+              >
+                Contact
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>

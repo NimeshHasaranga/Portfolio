@@ -12,7 +12,7 @@ const Roles = ({ role }) => {
     <div
       onMouseEnter={() => setMouseHover(true)}
       onMouseLeave={() => setMouseHover(false)}
-      className="p-4 xs:p-8 bg-white hover:shadow-xl h-auto shadow-gray-300 ease-out duration-800 rounded-lg my-6 flex relative overflow-hidden"
+      className="p-4 xs:p-8 bg-base-100 hover:shadow-xl h-auto shadow-base-300 ease-out duration-800 rounded-lg my-6 flex relative overflow-hidden"
     >
       <p
         className={`bg-picto-primary absolute start-0 w-0 h-full mt-[-16px] xs:mt-[-32px] ${
@@ -20,10 +20,10 @@ const Roles = ({ role }) => {
         }`}
       />
       <div>
-        <p className="text-xl sm:text-2xl font-semibold text-gray-900 pb-4">
+        <p className="text-xl sm:text-2xl font-semibold text-base-content pb-4">
           {role?.title}
         </p>
-        <p className="text-[13px] sm:text-[16px] font-normal text-gray-700">
+        <p className="text-[13px] sm:text-[16px] font-normal text-base-content/80">
           {role?.description}
         </p>
       </div>
